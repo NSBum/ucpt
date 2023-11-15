@@ -1,5 +1,5 @@
 use std::env;
-use std::io::{self, Write};
+use std::io::{self};
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -7,7 +7,7 @@ fn main() {
     let character = if args.len() > 1 {
         args[1].chars().next().expect("No character found")
     } else {
-        io::stdout().flush().unwrap();
+        //io::stdout().flush().unwrap();
         let mut input = String::new();
         io::stdin().read_line(&mut input).expect("Failed to read line");
         input.trim().chars().next().expect("No character found")
