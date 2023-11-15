@@ -13,7 +13,15 @@ fn main() {
         input.trim().chars().next().expect("No character found")
     };
 
+    let mut utf8_bytes_hex = String::new();
+
+    for byte in character.to_string().as_bytes() {
+        utf8_bytes_hex.push_str(&format!("{:02X} ", byte));
+    }
+
+    utf8_bytes_hex = utf8_bytes_hex.trim_end().to_string();
+
     let unicode_value = format!("U+{:04X}", character as u32);
-    println!("{}", unicode_value);
+    println!("{}|{}", unicode_value, utf8_bytes_hex);
 }
 
